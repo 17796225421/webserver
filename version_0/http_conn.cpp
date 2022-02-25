@@ -176,17 +176,7 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char* text) {
     if (strcasecmp( m_version, "HTTP/1.1") != 0 ) {
         return BAD_REQUEST;
     }
-    /**
-     * http://192.168.110.129:10000/index.html
-    */
-    if (strncasecmp(m_url, "http://", 7) == 0 ) {   
-        m_url += 7;
-        // 在参数 str 所指向的字符串中搜索第一次出现字符 c（一个无符号字符）的位置。
-        m_url = strchr( m_url, '/' );
-    }
-    if ( !m_url || m_url[0] != '/' ) {
-        return BAD_REQUEST;
-    }
+
     m_check_state = CHECK_STATE_HEADER; // 检查状态变成检查头
     return NO_REQUEST;
 }
@@ -221,7 +211,7 @@ http_conn::HTTP_CODE http_conn::parse_headers(char* text) {
         text += strspn( text, " \t" );
         m_host = text;
     } else {
-        printf( "oop! unknow header %s\n", text );
+        printf( "unknow header %s\n", text );
     }
     return NO_REQUEST;
 }

@@ -37,12 +37,7 @@ int main( int argc, char* argv[] ) {
     int port = atoi( argv[1] );
     addsig( SIGPIPE, SIG_IGN );
 
-    threadpool< http_conn >* pool = NULL;
-    try {
-        pool = new threadpool<http_conn>;
-    } catch( ... ) {
-        return 1;
-    }
+    threadpool< http_conn >* pool = new threadpool<http_conn>;
 
     http_conn* users = new http_conn[ MAX_FD ];
 
@@ -113,7 +108,7 @@ int main( int argc, char* argv[] ) {
 
                 if( !users[sockfd].write() ) {
                     users[sockfd].close_conn();
-                }
+                } 
 
             }
         }
