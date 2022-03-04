@@ -21,9 +21,9 @@
 #include <sys/uio.h>
 #include <map>
 
-#include "../lock/locker.h"
-#include "../timer/lst_timer.h"
-#include "../log/log.h"
+#include "locker.h"
+#include "lst_timer.h"
+#include "log.h"
 
 class http_conn
 {

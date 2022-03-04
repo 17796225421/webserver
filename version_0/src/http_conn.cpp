@@ -12,7 +12,7 @@ const char* error_500_title = "Internal Error";
 const char* error_500_form = "There was an unusual problem serving the requested file.\n";
 
 // 网站的根目录
-const char* doc_root = "/root/project/webserver/version_0/resources";
+const char* doc_root = "/root/project/webserver/version_0/assets";
 
 int setnonblocking( int fd ) {
     int old_option = fcntl( fd, F_GETFL );
@@ -276,7 +276,7 @@ http_conn::HTTP_CODE http_conn::process_read() {
 // 映射到内存地址m_file_address处，并告诉调用者获取文件成功
 http_conn::HTTP_CODE http_conn::do_request()
 {
-    // "/home/nowcoder/webserver/resources"
+    // "/home/nowcoder/webserver/assets"
     strcpy( m_real_file, doc_root );
     int len = strlen( doc_root );
     strncpy( m_real_file + len, m_url, FILENAME_LEN - len - 1 );
@@ -400,6 +400,7 @@ bool http_conn::add_headers(int content_len) {
     add_content_type();
     add_linger();
     add_blank_line();
+    return true;
 }
 
 bool http_conn::add_content_length(int content_len) {

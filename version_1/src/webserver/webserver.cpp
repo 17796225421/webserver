@@ -6,12 +6,9 @@ WebServer::WebServer()
     users = new http_conn[MAX_FD];
 
     //root文件夹路径
-    char server_path[200];
-    getcwd(server_path, 200);
-    char root[10] = "/resourse";
-    m_root = (char *)malloc(strlen(server_path) + strlen(root) + 1);
+    char server_path[200]="/root/project/webserver/version_1/assets";
+    m_root = (char *)malloc(strlen(server_path) + 1);
     strcpy(m_root, server_path);
-    strcat(m_root, root);
 
     //定时器
     users_timer = new client_data[MAX_FD];
