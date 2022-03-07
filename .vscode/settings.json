@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.tcc": "cpp",
+        "getopt.h": "c",
+        "param.h": "c"
+    }
+}

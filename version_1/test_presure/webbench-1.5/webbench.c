@@ -18,7 +18,6 @@
 #include "socket.c"
 #include <unistd.h>
 #include <sys/param.h>
-#include <rpc/types.h>
 #include <getopt.h>
 #include <strings.h>
 #include <time.h>
